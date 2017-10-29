@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('buku', 'bukuController');
+Route::get('/buku/delete/{id}','anggotaController@destroy');
+
+Route::resource('usermanage', 'userManageController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
