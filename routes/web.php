@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::resource('buku', 'bukuController');
 Route::get('/buku/delete/{id}','bukuController@destroy');
 
+Route::resource('kasir', 'kasirController');
+Route::get('/kasir/delete/{id}','kasirController@destroy');
+
 Route::resource('usermanage', 'userManageController');
 
 Auth::routes();
