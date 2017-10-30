@@ -11,6 +11,20 @@ Buku
 
 @if(Auth::user()->role == 'ADMIN')
 @section('create')
+
+@if(Session::get('message') == NULL)
+    <div class="alert alert-success alert-dismissible fade in" role="alert" style="display:none;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <strong>{{ Session::get('message') }}</strong>
+    </div>
+@else
+    <div class="alert alert-warning" role="alert">
+        <strong>{{ Session::get('message') }}</strong>
+    </div>
+@endif
+
 <a href="buku/create" class="btn btn-success">
     Create
 </a>
@@ -55,10 +69,10 @@ Buku
         <td>{{ $vars->ppn}}</td>
         <td>{{ $vars->diskon}}</td>
         <td>
-            <a href="/buku/{{$vars->id_buku}}/edit" class="btn btn-warning">
+            <a href="/buku/{{$vars->id_buku}}/edit" class="btn btn-warning" style="width:80px">
                 Edit
             </a>
-            <a href="{{url('buku/delete',$vars->id_buku)}}" class="btn btn-danger">
+            <a href="{{url('buku/delete',$vars->id_buku)}}" class="btn btn-danger" style="width:80px">
                 Delete
             </a>
         </td>

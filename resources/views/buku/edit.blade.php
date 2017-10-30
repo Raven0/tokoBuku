@@ -6,7 +6,7 @@
 </style>
 
 @section('panelhead')
-Edit Pinjaman
+Edit Buku
 @endsection
 
 @section('create')
@@ -20,41 +20,46 @@ Edit Pinjaman
         @endforeach
     </ul>
 @endif
-<form action="/anggota/{{$var->id_anggota}}" method="post">
+<form action="/buku/{{$var->id_buku}}" method="post">
     <div class="form-group">
-        <label>Nama Anggota</label>
-        <input type="text" name="nama" value="{{$var->nama}}" class="form-control">
+        <label>ISBN</label>
+        <input type="text" name="noisbn" value="{{$var->noisbn}}" class="form-control">
     </div>
     <div class="form-group">
-        <label>Alamat</label>
-        <input type="text" name="alamat" value="{{$var->alamat}}" class="form-control">
+        <label>Judul</label>
+        <input type="text" name="judul" value="{{$var->judul}}" class="form-control">
     </div>
     <div class="form-group">
-        <label>Tgl Lahir</label>
-        <input type="date" name="tgl_lhr" value="{{$var->tgl_lhr}}" class="form-control">
+        <label>Pengarang</label>
+        <input type="text" name="penulis" value="{{$var->penulis}}" class="form-control">
     </div>
     <div class="form-group">
-        <label>Tempat Lahir</label>
-        <input type="text" name="tmp_lhr" value="{{$var->tmp_lhr}}" class="form-control">
+        <label>Penerbit</label>
+        <input type="text" name="penerbit" value="{{$var->penerbit}}" class="form-control">
     </div>
     <div class="form-group">
-        <label>Jenis Kelamin</label>
-        <select class="form-control" name="j_kel">
-            <option value="PRIA" @if($var->j_kel == 'PRIA') selected @endif>PRIA</option>
-            <option value="WANITA" @if($var->j_kel == 'WANITA') selected @endif>WANTIA</option>
-        </select>
+        <label>Tahun</label>
+        <input type="text" name="tahun" value="{{$var->tahun}}" class="form-control">
     </div>
     <div class="form-group">
-        <label>Status</label>
-        <input type="text" name="status" value="{{$var->status}}" class="form-control">
+        <label>Stok</label>
+        <input type="text" name="stok" value="{{$var->stok}}" class="form-control">
     </div>
     <div class="form-group">
-        <label>Telepon</label>
-        <input type="text" name="no_tlp" value="{{$var->no_tlp}}" class="form-control">
+        <label>Harga Pokok</label>
+        <input type="text" name="harga_pokok" value="{{$var->harga_pokok}}" class="form-control">
     </div>
     <div class="form-group">
-        <label>Keterangan</label>
-        <input type="text" name="ket" value="{{$var->ket}}" class="form-control">
+        <label>Harga Jual</label>
+        <input type="text" name="harga_jual" value="{{$var->harga_jual}}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>PPN</label>
+        <input type="text" name="ppn" value="{{$var->ppn}}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Diskon</label>
+        <input type="text" name="diskon" value="{{$var->diskon}}" class="form-control">
     </div>
 
     <input type="submit" value="edit" class="btn btn-success">

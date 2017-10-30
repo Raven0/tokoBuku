@@ -6,7 +6,7 @@
 </style>
 
 @section('panelhead')
-Edit Pinjaman
+Tambah Buku
 @endsection
 
 @section('create')
@@ -20,41 +20,60 @@ Edit Pinjaman
         @endforeach
     </ul>
 @endif
-<form action="/anggota" method="post">
+
+@if(Session::get('message') == NULL)
+    <div class="alert alert-success alert-dismissible fade in" role="alert" style="display:none;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <strong>{{ Session::get('message') }}</strong>
+    </div>
+@else
+    <div class="alert alert-warning" role="alert">
+        <strong>{{ Session::get('message') }}</strong>
+    </div>
+@endif
+
+<form action="/buku" method="post">
     <div class="form-group">
-        <label>Nama Anggota</label>
-        <input type="text" name="nama" value="" class="form-control">
+        <label>ISBN</label>
+        <input type="text" name="noisbn" value="" class="form-control">
     </div>
     <div class="form-group">
-        <label>Alamat</label>
-        <input type="text" name="alamat" value="" class="form-control">
+        <label>Judul</label>
+        <input type="text" name="judul" value="" class="form-control">
     </div>
     <div class="form-group">
-        <label>Tgl Lahir</label>
-        <input type="date" name="tgl_lhr" value="" class="form-control">
+        <label>Pengarang</label>
+        <input type="text" name="penulis" value="" class="form-control">
     </div>
     <div class="form-group">
-        <label>Tempat Lahir</label>
-        <input type="text" name="tmp_lhr" value="" class="form-control">
+        <label>Penerbit</label>
+        <input type="text" name="penerbit" value="" class="form-control">
     </div>
     <div class="form-group">
-        <label>Jenis Kelamin</label>
-        <select class="form-control" name="j_kel">
-            <option value="PRIA")>PRIA</option>
-            <option value="WANITA")>WANTIA</option>
-        </select>
+        <label>Tahun</label>
+        <input type="text" name="tahun" value="" class="form-control">
     </div>
     <div class="form-group">
-        <label>Status</label>
-        <input type="text" name="status" value="" class="form-control">
+        <label>Stok</label>
+        <input type="text" name="stok" value="" class="form-control">
     </div>
     <div class="form-group">
-        <label>Telepon</label>
-        <input type="text" name="no_tlp" value="" class="form-control">
+        <label>Harga Pokok</label>
+        <input type="text" name="harga_pokok" value="" class="form-control">
     </div>
     <div class="form-group">
-        <label>Keterangan</label>
-        <input type="text" name="ket" value="" class="form-control">
+        <label>Harga Jual</label>
+        <input type="text" name="harga_jual" value="" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>PPN</label>
+        <input type="text" name="ppn" value="" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Diskon</label>
+        <input type="text" name="diskon" value="" class="form-control">
     </div>
 
     <input type="submit" value="create" class="btn btn-success">

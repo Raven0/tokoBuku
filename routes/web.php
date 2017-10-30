@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('buku', 'bukuController');
-Route::get('/buku/delete/{id}','anggotaController@destroy');
+Route::get('/buku/delete/{id}','bukuController@destroy');
 
 Route::resource('usermanage', 'userManageController');
 

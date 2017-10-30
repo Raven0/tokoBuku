@@ -46,32 +46,37 @@ class bukuController extends Controller
     public function store(Request $request)
     {
         //
-        $var = new Anggota;
-        $var->nama = $request->nama;
-        $var->alamat = $request->alamat;
-        $var->tgl_lhr = $request->tgl_lhr;
-        $var->tmp_lhr = $request->tmp_lhr;
-        $var->j_kel = $request->j_kel;
-        $var->status = $request->status;
-        $var->no_tlp = $request->no_tlp;
-        $var->ket = $request->ket;
-        $var->save();
-        return redirect('anggota');
-
-        $this->validate($request,[
-          'KodePlk' => 'required',
-          'NamaPlk' => 'required',
+        $this->validate($request, [
+           'noisbn' => 'required',
+           'judul' => 'required',
+           'penulis' => 'required',
+           'penerbit' => 'required',
+           'tahun' => 'required',
+           'stok' => 'required',
+           'harga_pokok' => 'required',
+           'harga_jual' => 'required',
+           'ppn' => 'required',
+           'diskon' => 'required',
         ]);
-        $as = new Poliklinik;
-        $as->KodePlk = $request->KodePlk;
-        $as->NamaPlk = $request->NamaPlk;
-        $ca = $request['KodePlk'];
-        $ccd = Poliklinik::where('KodePlk', $ca)->value('KodePlk');
-        if ($ccd==NULL) {
-          $as->save();
-          return redirect('poli')->with('message', 'Data Berhasil di tambahkan');
-        }else{
-          return redirect('poli/create')->with('message', 'Kode Poliklinik sudah tersedia, silahkan masukan Kode lain');
+
+        $var = new Buku;
+        $var->noisbn = $request->noisbn;
+        $var->judul = $request->judul;
+        $var->penulis = $request->penulis;
+        $var->penerbit = $request->penerbit;
+        $var->tahun = $request->tahun;
+        $var->stok = $request->stok;
+        $var->harga_pokok = $request->harga_pokok;
+        $var->harga_jual = $request->harga_jual;
+        $var->ppn = $request->ppn;
+        $var->diskon = $request->diskon;
+        $validation = $request['judul'];
+        $validator = Buku::where('judul', $validation)->value('judul');
+        if($validator == NULL){
+            $var->save();
+            return redirect('buku')->with('message', 'Data Berhasil di tambahkan');
+        } else {
+            return redirect('buku/create')->with('message', 'Buku sudah terdaftar, silahkan masukan buku lain');
         }
     }
 
@@ -95,12 +100,12 @@ class bukuController extends Controller
     public function edit($id)
     {
         //
-        $var = Anggota::find($id);
+        $var = Buku::find($id);
         if(!$var){
             abort(404);
         }
 
-        return view('anggota.edit')->with('var', $var);
+        return view('buku.edit')->with('var', $var);
     }
 
     /**
@@ -113,17 +118,19 @@ class bukuController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $var = Anggota::find($id);
-        $var->nama = $request->nama;
-        $var->alamat = $request->alamat;
-        $var->tgl_lhr = $request->tgl_lhr;
-        $var->tmp_lhr = $request->tmp_lhr;
-        $var->j_kel = $request->j_kel;
-        $var->status = $request->status;
-        $var->no_tlp = $request->no_tlp;
-        $var->ket = $request->ket;
-        $var ->save();
-        return redirect('anggota');
+        $var = Buku::find($id);
+        $var->noisbn = $request->noisbn;
+        $var->judul = $request->judul;
+        $var->penulis = $request->penulis;
+        $var->penerbit = $request->penerbit;
+        $var->tahun = $request->tahun;
+        $var->stok = $request->stok;
+        $var->harga_pokok = $request->harga_pokok;
+        $var->harga_jual = $request->harga_jual;
+        $var->ppn = $request->ppn;
+        $var->diskon = $request->diskon;
+        $var->save();
+        return redirect('buku')->with('message', 'Data Berhasil di Edit');
     }
 
     /**
@@ -135,8 +142,8 @@ class bukuController extends Controller
     public function destroy($id)
     {
         //
-        $var = Anggota::find($id);
+        $var = Buku::find($id);
         $var ->delete();
-        return redirect('anggota');
+        return redirect('buku');
     }
 }
