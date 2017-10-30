@@ -109,7 +109,7 @@ class distriController extends Controller
         $var->alamat = $request->alamat;
         $var->telepon = $request->telepon;
         $var->save();
-        return redirect('distributor')->with('message', 'Data Berhasil di Edit');}
+        return redirect('distributor')->with('message', 'Data Berhasil di Edit');
 
     /**
      * Remove the specified resource from storage.

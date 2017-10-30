@@ -24,6 +24,9 @@ Route::get('/kasir/delete/{id}','kasirController@destroy');
 Route::resource('distributor', 'distriController');
 Route::get('/distributor/delete/{id}','distriController@destroy');
 
+Route::resource('pasok', 'pasokController');
+Route::get('/pasok/delete/{id}','pasokController@destroy');
+
 Route::resource('usermanage', 'userManageController');
 
 Auth::routes();
