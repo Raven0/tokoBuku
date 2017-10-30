@@ -27,6 +27,9 @@ Route::get('/distributor/delete/{id}','distriController@destroy');
 Route::resource('pasok', 'pasokController');
 Route::get('/pasok/delete/{id}','pasokController@destroy');
 
+Route::resource('jual', 'jualController');
+Route::get('/jual/delete/{id}','jualController@destroy');
+
 Route::resource('usermanage', 'userManageController');
 
 Auth::routes();
