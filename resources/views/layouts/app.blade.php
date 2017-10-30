@@ -52,17 +52,67 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                                    @if(Auth::user()->role == 'ADMIN')
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <a href="buku">Buku</a>
+                                        </li>
+                                        <li>
+                                            <a href="distributor">Distributor</a>
+                                        </li>
+                                        <li>
+                                            <a href="kasir">Kasir</a>
+                                        </li>
+                                        <li>
+                                            <a href="pasok">Pasok</a>
+                                        </li>
+                                        <li>
+                                            <a href="jual">Penjualan</a>
+                                        </li>
+                                        <li>
+                                            <a href="usermanage">Manage User</a>
+                                        </li>
+                                    @elseif(Auth::user()->role == 'KASIR')
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <a href="jual">Penjualan</a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <a href="buku">Buku</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </li>
                         @endif

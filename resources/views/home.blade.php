@@ -18,7 +18,7 @@ You are logged in! Hello <b>{{Auth::user()->name}}</b><br>
 @if(Auth::user()->role == 'ADMIN')
 Welcome ADMIN!
 @else
-Welcome USER!
+Welcome!
 @endif
 @endsection
 @endsection

@@ -92,7 +92,8 @@ class distriController extends Controller
             abort(404);
         }
 
-        return view('distributor.edit')->with('var', $var);}
+        return view('distributor.edit')->with('var', $var);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -110,7 +111,7 @@ class distriController extends Controller
         $var->telepon = $request->telepon;
         $var->save();
         return redirect('distributor')->with('message', 'Data Berhasil di Edit');
-
+    }
     /**
      * Remove the specified resource from storage.
      *
